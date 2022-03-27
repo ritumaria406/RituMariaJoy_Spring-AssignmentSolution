@@ -40,9 +40,9 @@ public class StudentController {
 	// add mapping for "/list"
 
 	@RequestMapping("/list")
-	public String listBooks(Model theModel) {		
+	public String listStudents(Model theModel) {		
 
-		// get Books from db
+		// get Students from db
 		List<Student> theStudents = studentService.findAll();
 
 		// add to the spring model
@@ -68,11 +68,11 @@ public class StudentController {
 	public String showFormForUpdate(@RequestParam("studentId") int theId,
 			Model theModel) {
 
-		// get the Book from the service
+		// get the Student from the service
 		Student theStudent = studentService.findById(theId);
 
 
-		// set Book as a model attribute to -populate the form
+		// set Student as a model attribute to -populate the form
 		theModel.addAttribute("Student", theStudent);
 
 		// send over to our form
@@ -95,7 +95,7 @@ public class StudentController {
 		}
 		else
 			theStudent=new Student(name, department, country);
-		// save the Book
+		// save the Student
 		studentService.save(theStudent);
 
 
@@ -109,10 +109,10 @@ public class StudentController {
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("studentId") int theId) {
 
-		// delete the Book
+		// delete the Student
 		studentService.deleteById(theId);
 
-		// redirect to /Books/list
+		// redirect to /Student/list
 		return "redirect:/Student/list";
 
 	}
